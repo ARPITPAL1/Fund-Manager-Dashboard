@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: fintrend-fund-manager-dashboard
+    runtime: python
+    region: oregon
+    plan: free
+    buildCommand: bash build.sh
+    startCommand: daphne -b 0.0.0.0 -p $PORT --root-path backend_django fintrend.asgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: PYTHONPATH
+        value: backend_django
