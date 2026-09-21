@@ -1,0 +1,1 @@
+# fintrend package init
